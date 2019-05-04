@@ -1,0 +1,26 @@
+<% if @employee.errors.any? %>
+<h2>The following errors prevented the employee from saving:</h2>
+<ul>
+<% @employee.errors.full_messages.each do |msg|%>
+<li><%= msg %></li>
+<% end %>
+</ul>
+<% end %>
+  <%= form_for @employee do |f| %>
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+    <%= f.label :active %>
+    <%= f.check_box :active %>
+    </p>
+    <p>
+      <%= f.label :department_id %>
+       <%= f.select :department_id, Department.all.collect {|c| [c.name, c.id]} %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
+<%= link_to 'Back', employees_path %>

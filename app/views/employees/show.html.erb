@@ -1,0 +1,12 @@
+<h1>Showing selected Employee</h1>
+<p>
+ Name: <%= @employee.name %>
+</p>
+<p>
+ Active: <%= @employee.active %>
+</p>
+<p>
+ Department: <%= @employee.department.name %>
+</p>
+<%= link_to 'Back', employees_path %>
+<%= link_to "Edit", edit_employee_path(@employee) %>

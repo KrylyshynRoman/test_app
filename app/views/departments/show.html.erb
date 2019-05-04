@@ -1,0 +1,6 @@
+<h1>Showing selected Department</h1>
+<p>
+ Name: <%= @department.name %>
+</p>
+<%= link_to 'Back', departments_path, class: "btn btn-xs btn-success" %>
+<%= link_to "Edit", edit_department_path(@department),class: "btn btn-xs btn-primary" %>

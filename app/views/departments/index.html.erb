@@ -1,0 +1,19 @@
+<h1>Departments</h1>
+<p><%= link_to 'Employees', employees_path %></p>
+<p>
+<%= link_to "Create new department", new_department_path %>
+</p>
+<table>
+ <tr>
+  <th>Name</th>
+  <th>Actions</th>
+ </tr>
+ <% @departments.each do |department| %>
+ <tr>
+  <td><%= department.name %></td>
+  <td><%= link_to 'Edit', edit_department_path(department),class: "btn btn-xs btn-primary" %></td>
+  <td><%= link_to 'Show', department_path(department),class: "btn btn-xs btn-success" %></td>
+  <td><%= link_to 'Delete', department_path(department), method: :delete, data: {confirm: "Are you sure?"} %></td>
+ </tr>
+ <% end %>
+</table>
