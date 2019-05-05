@@ -2,7 +2,12 @@ class EmployeesController < ApplicationController
   before_action :set_employee, only: [:edit, :update, :show, :destroy]
  def index
    @employees = Employee.all
- end
+   if params[:search]
+     @employees = Employee.search(params[:search])
+   else
+     @employees = Employee.all.order('created_at DESC')
+   end
+  end
 
  def new
   @employee = Employee.new
@@ -12,6 +17,7 @@ end
 
  def create
   @employee = Employee.new(employee_params)
+  @employee.department = Department.first
   if @employee.save
     flash[:notice] = "Employee was successfully created"
     redirect_to employee_path(@employee)

@@ -4,6 +4,7 @@
     <title>TestApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
     <% flash.each do |name, msg| %>
         <ul>
          <li><%= msg %></li>
@@ -16,4 +17,5 @@
   <body>
     <%= yield %>
   </body>
+
 </html>
