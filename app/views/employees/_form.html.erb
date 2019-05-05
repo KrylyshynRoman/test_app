@@ -17,7 +17,7 @@
     </p>
     <p>
       <%= f.label :department_id %>
-       <%= f.select :department_id, Department.all.collect {|c| [c.name, c.id]} %>
+       <%= f.select :department_id, Department.all.collect {|d| [d.name, d.id]} %>
     </p>
     <p>
       <%= f.submit %>

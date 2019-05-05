@@ -7,6 +7,7 @@ class EmployeesController < ApplicationController
    else
      @employees = Employee.all.order('created_at DESC')
    end
+   @employees = Employee.paginate(page: params[:page], per_page: 5)
   end
 
  def new
@@ -17,7 +18,7 @@ end
 
  def create
   @employee = Employee.new(employee_params)
-  @employee.department = Department.first
+
   if @employee.save
     flash[:notice] = "Employee was successfully created"
     redirect_to employee_path(@employee)

@@ -16,6 +16,7 @@
 <%= link_to "Create new employee", new_employee_path %>
 </p>
 <table>
+  <%= will_paginate %>
  <tr>
   <th>ID</th>
   <th>Name</th>
@@ -24,14 +25,17 @@
   <th>Actions</th>
  </tr>
  <% @employees.each do |employee| %>
+
  <tr>
   <td><%= employee.id %></td>
   <td><%= employee.name %></td>
   <td><%= employee.active %></td>
-  <td><%= employee.department.name if employee.department %></td>
+  <td><%= employee.department.name %></td>
   <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
   <td><%= link_to 'Show', employee_path(employee) %></td>
   <td><%= link_to 'Delete', employee_path(employee), method: :delete, data: {confirm: "Are you sure?"} %></td>
  </tr>
+
+
  <% end %>
 </table>

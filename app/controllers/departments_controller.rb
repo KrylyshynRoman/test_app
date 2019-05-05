@@ -3,11 +3,6 @@ class DepartmentsController < ApplicationController
 
  def index
    @departments = Department.all
-   if params[:search]
-     @departments = Department.search(params[:search])
-   else
-     @departments = Department.all.order('created_at DESC')
-   end
  end
 
 
