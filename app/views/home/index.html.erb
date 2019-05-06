@@ -1,0 +1,14 @@
+<h1>Welcome</h1>
+<h2>You need to Sign Up or Log In</h2>
+<% if current_user %>
+  Logged in as <%= current_user.email %>.
+  <%= link_to "Log Out", logout_path %>
+<% else %>
+  <%= link_to "Sing Up", signup_path %> or
+  <%= link_to "Log In", login_path %>
+<% end %>
+<p id=”notice”><%= notice %></p>
+<% if logged_in? %>
+<p><%= link_to 'Employees', employees_path %></p>
+<p><%= link_to 'Departments', departments_path %></p>
+<% end %>

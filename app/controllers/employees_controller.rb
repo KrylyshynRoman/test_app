@@ -30,6 +30,7 @@ end
  end
 
  def update
+   
    if @employee.update(employee_params)
     flash[:notice] = "Employee was updated"
     redirect_to employee_path(@employee)

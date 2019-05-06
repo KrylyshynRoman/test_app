@@ -1,11 +1,10 @@
-<p id="notice"><%= notice %></p>
-
+<!--Search -->
 <%= form_tag(employees_path, :method => "get", id: "search-form") do %>
 <%= text_field_tag :search, params[:search], placeholder: "Search" %>
 <%= submit_tag "Search" %>
 <% end %>
 <p id="notice"><%= notice %></p>
-
+<!-- Login-->
 <% if current_user %>
   Logged in as <%= current_user.email %>.
   <%= link_to "Log Out", logout_path %>
@@ -16,9 +15,11 @@
 <p id=”notice”><%= notice %></p>
 <h1>Employees</h1>
 <p><%= link_to 'Departments', departments_path %></p>
+<% if logged_in? %>
 <p>
 <%= link_to "Create new employee", new_employee_path %>
 </p>
+<% end %>
 <table>
   <%= will_paginate %>
  <tr>
@@ -35,9 +36,11 @@
   <td><%= employee.name %></td>
   <td><%= employee.active %></td>
   <td><%= employee.department.name %></td>
+  <% if logged_in? %>
   <td><%= link_to 'Edit', edit_employee_path(employee) %></td>
   <td><%= link_to 'Show', employee_path(employee) %></td>
   <td><%= link_to 'Delete', employee_path(employee), method: :delete, data: {confirm: "Are you sure?"} %></td>
+  <% end %>
  </tr>
 
 
